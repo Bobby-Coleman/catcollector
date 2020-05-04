@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Cat
 from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView
 
 def home (request):
     return render(request, 'home.html')
@@ -16,3 +17,8 @@ class CatList(ListView):
 
 class CatDetail(DetailView):
     model = Cat
+
+
+class CatCreate(CreateView):
+    model = Cat
+    fields = '__all__'
