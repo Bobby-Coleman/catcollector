@@ -22,3 +22,4 @@ class CatDetail(DetailView):
 class CatCreate(CreateView):
     model = Cat
     fields = '__all__'
+    # success_url = '/cats/'
