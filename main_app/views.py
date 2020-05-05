@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Cat
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 def home (request):
     return render(request, 'home.html')
@@ -27,3 +27,7 @@ class CatCreate(CreateView):
 class CatUpdate(UpdateView):
     model = Cat
     fields = ['name', 'description', 'age']
+
+class CatDelete(DeleteView):
+    model = Cat
+    success_url = '/cats/'
