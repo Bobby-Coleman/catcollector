@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Cat
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import FeedingForm
 
 def home (request):
     return render(request, 'home.html')
@@ -16,10 +17,10 @@ class CatList(ListView):
 
 def cats_detail(request, pk):
     cat = Cat.objects.get(id=pk)
-    # feeding_form = FeedingForm()
+    feeding_form = FeedingForm()
     return render(request, 'main_app/cat_detail.html', {
         'cat': cat,
-        # 'feeding_form': feeding_form
+        'feeding_form': feeding_form
     })
 
 class CatCreate(CreateView):
