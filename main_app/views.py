@@ -14,10 +14,13 @@ class CatList(ListView):
     def get_queryset(self):
         return Cat.objects.all()
 
-
-class CatDetail(DetailView):
-    model = Cat
-
+def cats_detail(request, pk):
+    cat = Cat.objects.get(id=pk)
+    # feeding_form = FeedingForm()
+    return render(request, 'main_app/cat_detail.html', {
+        'cat': cat,
+        # 'feeding_form': feeding_form
+    })
 
 class CatCreate(CreateView):
     model = Cat
